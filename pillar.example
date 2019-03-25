@@ -1,3 +1,7 @@
+# Deprecated and Removed sshd options will be indicated by inline comments.
+# D: indicates an option that is deprecated. R: indicates an option that is
+# removed. These will be followed by the applicable version of sshd.
+
 sshd_config:
   # This keyword is totally optional
   ConfigBanner: |
@@ -5,13 +9,13 @@ sshd_config:
     # (Indented) hash signs lose their special meaning here
     # and the lines will be written as-is.
   Port: 22
-  Protocol: 2
+  UsePrivilegeSeparation: 'sandbox' # D: >=7.5
+  Protocol: 2 # R: >7.5
   HostKey:
     - /etc/ssh/ssh_host_rsa_key
     - /etc/ssh/ssh_host_dsa_key
     - /etc/ssh/ssh_host_ecdsa_key
     - /etc/ssh/ssh_host_ed25519_key
-  UsePrivilegeSeparation: 'sandbox'
   SyslogFacility: AUTH
   LogLevel: INFO
   ClientAliveInterval: 0
